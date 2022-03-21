@@ -71,6 +71,8 @@ function setup() {
 function draw() {
   background(255);
 
+  kangaroo.x=camera.position.x-270;
+                 
   // ajustar posición de cámara
    
   if (gameState===PLAY){
@@ -125,7 +127,7 @@ function draw() {
 function spawnShrubs() {
 
   if (frameCount % 200 === 0) {
-    var shrub = createSprite(1,1,1,1);
+    var shrub = createSprite(camera.position.x+420,330,40,40);
     // establece la posición de los arbustos
 
     shrub.velocityX = -(6 + 3*score/100)
@@ -148,16 +150,14 @@ function spawnShrubs() {
     
     shrub.setCollider("rectangle",0,0,shrub.width/2,shrub.height/2)
     shrubsGroup.add(shrub);
-     shrub.x=550;
-    shrub.y=350;
+   
   }
   
 }
   
 function spawnObstacles() {
   if(frameCount % 120 === 0) {
-    var obstacle = createSprite(50,50,10,10);
-
+    var obstacle = createSprite(camera.position.x+400,330,40,40);
     // establece la posición x de los obstáculos
    
     obstacle.setCollider("rectangle",0,0,100,100)
@@ -169,7 +169,6 @@ function spawnObstacles() {
   
     obstaclesGroup.add(obstacle);
 
-    obstacle.x=570;
-    obstacle.y=370;
+  
   }
 }
